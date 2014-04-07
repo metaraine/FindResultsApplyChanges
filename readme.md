@@ -12,6 +12,20 @@ Apply any change you made to a "Find Results" buffer back to the files. ie:
 - This will write all the changes made back to the files.
 - Will be enabled only if the focused view is the "Find Results" tab.
 
+### Keyboard Shortcuts
+Specify a key command to open a file from the "Find Results" butter using the keyboard (equivalent to Sublime's default double-click behavior). Add the following to your keyboard settings file, ST3/Packages/User/Default (SYSTEM).sublime-keymap:
+
+	{
+		"keys": ["super+alt+o"],
+		"command": "find_in_files_goto",
+		"context": [{
+				"key": "selector",
+				"operator": "equal",
+				"operand": "text.find-in-files"
+		}]
+	}
+
+
 ## Bugs
 
 - Uses regions to allow you do multiline changes, but when inserting new newlines, will corrupt files **if you commit more than once**, this because the new newlines will shift the line numbers. Will also 'corrupt' files if you add/remove newlines in other instances of the modified files. eg in another tab. To prevent corruption this packages will alert you and prevent most of these.
